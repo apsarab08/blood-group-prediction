@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+  .privacy-wrapper{
+    font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
+    background:#f6f9fb;
+    color:#0b2440;
+    padding:40px;
+    display:flex;
+    justify-content:center;
+  }
+
+  .card{
+    max-width:920px;
+    width:100%;
+    background:#fff;
+    padding:28px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(11,36,64,0.06);
+  }
+
+  h1{margin-top:0}
+  h2{margin-top:24px}
+  p{color:#374151;line-height:1.6}
+  ul{color:#374151;line-height:1.6;margin-left:18px}
+  .muted{color:#6b7280;font-size:14px}
+  .small{font-size:13px;color:#6b7280;margin-top:24px}
+</style>
+
+
+<div class="privacy-wrapper">
+  <main class="card" role="main" aria-labelledby="pp-heading">
+
+    <h1 id="pp-heading">Privacy Policy</h1>
+    <p class="muted">Last updated: November 20, 2025</p>
+
+    <p>
+      This Privacy Policy explains how the <strong>Blood Group Prediction</strong> project
+      ("we", "our", "us") collects, uses, stores, and protects personal data when you use
+      our website and services, including when you upload fingerprint images for
+      blood-group prediction.
+    </p>
+
+    <h2>1. Data We Collect</h2>
+    <ul>
+      <li><strong>Fingerprint images</strong> (JPG/PNG) uploaded by users for analysis.</li>
+      <li><strong>Contact information</strong> (name, email, role) provided via the contact form.</li>
+      <li><strong>Usage data</strong> such as timestamps, IP addresses, analytics.</li>
+    </ul>
+
+    <h2>2. Purpose of Processing</h2>
+    <p>We process the data to:</p>
+    <ul>
+      <li>Provide the prediction service.</li>
+      <li>Improve machine learning models and research outcomes.</li>
+      <li>Respond to inquiries via the contact form.</li>
+    </ul>
+
+    <h2>3. Storage & Retention</h2>
+    <p>
+      Uploaded images and contact messages are stored securely. Images may be retained for
+      up to <strong>1 year</strong> for research unless you request deletion earlier.
+      Contact messages may be stored for <strong>3 years</strong>.
+    </p>
+
+    <h2>4. Sharing & Third Parties</h2>
+    <p>
+      We do <strong>not</strong> sell your data. Anonymized data may be used for research
+      publications. Data is shared with service providers only when necessary for system
+      operation.
+    </p>
+
+    <h2>5. Security</h2>
+    <p>
+      We apply reasonable safeguards including secure storage and HTTPS when deployed.
+      However, no system is 100% secure—avoid uploading highly sensitive information.
+    </p>
+
+    <h2>6. Your Rights</h2>
+    <ul>
+      <li><strong>Access</strong> — Request copies of your data.</li>
+      <li><strong>Correction</strong> — Request updates to inaccurate information.</li>
+      <li><strong>Deletion</strong> — Request deletion of your images or messages.</li>
+    </ul>
+
+    <h2>7. Research & Publication</h2>
+    <p>
+      We prefer anonymized and aggregated datasets for research. No publication will reveal
+      individual identities.
+    </p>
+
+    <h2>8. Contact</h2>
+    <p>
+      For privacy requests email:
+      <a href="mailto:1bi22cs063@bit-bangalore.edu.in">1bi22cs063@bit-bangalore.edu.in</a>
+    </p>
+
+    <p class="small">
+      This policy applies to the Blood Group Prediction prototype. If deployed publicly,
+      please update the policy to match hosting and storage details.
+    </p>
+
+  </main>
+</div>
+
+{% endblock %}

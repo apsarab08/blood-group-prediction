@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blood Group Detector</title>
+  <style>
+    :root{--accent:#3a7afe;--accent-dark:#1a5df4;--muted:#6b7280}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(135deg,#e9f0ff 0%,#fefefe 100%);color:#0f172a}
+    .nav{width:100%;padding:18px 30px;display:flex;justify-content:space-between;align-items:center}
+    .brand{font-weight:700;font-size:20px;color:var(--accent)}
+    .nav ul{list-style:none;display:flex;gap:18px;margin:0;padding:0;align-items:center}
+    .nav a{text-decoration:none;color:#0f172a;padding:8px 12px;border-radius:8px;font-weight:600}
+    .nav a:hover{background:rgba(58,124,254,0.08);color:var(--accent-dark)}
+    .page-wrap{max-width:1100px;margin:40px auto;padding:0 20px}
+    .card{background:#fff;border-radius:18px;padding:28px;box-shadow:0 10px 30px rgba(16,24,40,0.06)}
+    footer{text-align:center;padding:28px 0;color:var(--muted);font-size:14px;margin-top:40px}
+    .muted{color:var(--muted)}
+    .row{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+    .col{flex:1;min-width:260px}
+    @media (max-width:700px){.nav{padding:14px 16px}.page-wrap{margin:20px auto}}
+    .flash{padding:12px 16px;border-radius:10px;margin-bottom:12px}
+    .flash.success{background:#ecfdf5;color:#065f46}
+    .flash.error{background:#ffefef;color:#991b1b}
+    .btn-primary{padding:10px 18px;border-radius:10px;border:0;background:var(--accent);color:#fff;font-weight:700;cursor:pointer}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="brand">🩸 Blood Detector</div>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('how_it_works') }}">How it works</a></li>
+
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+
+        {% if session.get('role') == 'admin' %}
+        <li><a href="{{ url_for('admin_dashboard') }}">Admin</a></li>
+        <li><a href="{{ url_for('admin_donors') }}">Donor Search</a></li>
+        {% endif %}
+
+
+
+
+        {% if session.get('user_id') %}
+          <li><a href="#">Hi, {{ session['user_name'] }}</a></li>
+          <li><a href="{{ url_for('history') }}">History</a></li>
+          <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% else %}
+          <li><a href="{{ url_for('login') }}">Login</a></li>
+          <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+        {% endif %}
+        {% if session.get('user_id') %}
+    <li><a href="{{ url_for('account') }}">My Account</a></li>
+{% endif %}
+
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page-wrap">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, msg in messages %}
+          <div class="flash {{ 'success' if category=='success' else 'error' }}">{{ msg }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    © 2025 Blood Group Detection AI • Built with Flask
+  </footer>
+
+  <script>
+    function showLoaderText(elementId, text){ const el = document.getElementById(elementId); if(el) el.innerText = text; }
+  </script>
+</body>
+</html>

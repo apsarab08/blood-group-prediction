@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    .card-admin {
+        background: #fff;
+        padding: 25px;
+        border-radius: 20px;
+        border: 2px solid #ffcccc;
+        box-shadow: 0 10px 28px rgba(255,0,0,0.2);
+        margin-bottom: 30px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+    th {
+        background: #ffdbdb;
+        padding: 12px;
+        text-align: left;
+        font-size: 15px;
+        color: #b30000;
+        font-weight: 700;
+    }
+    td {
+        padding: 10px;
+        border-bottom: 1px solid #ffe5e5;
+        font-size: 14px;
+    }
+    .section-title {
+        font-size: 24px;
+        color: #b30000;
+        font-weight: 800;
+    }
+</style>
+
+<!-- DASHBOARD HEADER -->
+<div class="card-admin">
+    <h2 class="section-title">🩸 Admin Dashboard</h2>
+    <p class="muted">Manage donors and prediction history</p>
+</div>
+
+<!-- DONOR LIST -->
+<div class="card-admin">
+    <h3 class="section-title">Donor List</h3>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Blood Group</th>
+            <th>Phone</th>
+            <th>Gender</th>
+            <th>Location</th>
+            <th>Email</th>
+        </tr>
+
+        {% for u in users %}
+        <tr>
+            <td>{{ u.name }}</td>
+            <td><b>{{ u.blood_group }}</b></td>
+            <td>{{ u.phone }}</td>
+            <td>{{ u.gender }}</td>
+            <td>{{ u.location }}</td>
+            <td>{{ u.email }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<!-- PREDICTION LIST -->
+<div class="card-admin">
+    <h3 class="section-title">Prediction History</h3>
+
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Predicted Group</th>
+            <th>Confidence</th>
+            <th>Image</th>
+            <th>Date</th>
+        </tr>
+
+        {% for p in predictions %}
+        <tr>
+            <td>{{ p.name if p.name else 'Unknown User' }}</td>
+            <td>{{ p.predicted_label }}</td>
+            <td>{{ "%.2f"|format(p.confidence) }}%</td>
+            <td>
+                <img src="{{ url_for('static', filename='uploads/' + p.image_name) }}" 
+                     width="80" style="border-radius:8px;">
+            </td>
+            <td>{{ p.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

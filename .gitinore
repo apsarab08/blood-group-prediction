@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual env
+venv/
+.venv/
+
+# Tensorflow model files
+*.h5
+*.hdf5
+*.keras
+
+# IDE
+.idea/
+
+# Uploads
+static/uploads/
+
+# Environment variables
+.env
+
+# OS
+.DS_Store
+Thumbs.db

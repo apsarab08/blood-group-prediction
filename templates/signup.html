@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    .signup-card {
+        max-width: 520px;
+        margin: auto;
+        padding: 32px;
+        border-radius: 20px;
+        background: #fff;
+        box-shadow: 0 10px 35px rgba(255, 0, 0, 0.15);
+        border: 2px solid #ffcccc;
+        text-align: center;
+        animation: pop 0.4s ease;
+    }
+
+    @keyframes pop {
+        0% { transform: scale(0.95); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    .blood-title {
+        font-size: 30px;
+        font-weight: 800;
+        color: #c60000;
+        margin-bottom: 5px;
+    }
+
+    .blood-input, .blood-select {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 12px;
+        border: 2px solid #f5b5b5;
+        font-size: 15px;
+        transition: 0.3s;
+    }
+
+    .blood-btn {
+        width: 100%;
+        padding: 14px;
+        background: #d90000;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 17px;
+        font-weight: 700;
+        cursor: pointer;
+        margin-top: 14px;
+        transition: 0.25s;
+    }
+
+    .blood-btn:hover {
+        background: #b30000;
+    }
+
+    .drop-icon {
+        font-size: 48px;
+        color: #d90000;
+        margin-bottom: 5px;
+    }
+</style>
+
+<div class="signup-card">
+    <div class="drop-icon">🩸</div>
+    <div class="blood-title">Signup</div>
+
+    <form method="POST">
+
+        <input type="text" name="name" class="blood-input" placeholder="Full Name" required>
+
+        <input type="email" name="email" class="blood-input" placeholder="Email Address" required>
+
+        <input type="password" name="password" class="blood-input" placeholder="Create Password" required>
+
+        <input type="text" name="phone" class="blood-input" placeholder="Phone Number" required>
+
+        <!-- MAIN GENDER DROPDOWN -->
+        <select name="gender" id="gender" class="blood-select" required>
+            <option value="" disabled selected>Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <!-- SUB OPTIONS (ONLY if Other selected) -->
+        <select name="gender_other" id="gender_other" class="blood-select" style="display:none;">
+            <option value="" disabled selected>Select Specific Gender</option>
+            <option value="Transgender">Transgender</option>
+            <option value="Non-binary">Non-binary</option>
+            <option value="Genderfluid">Genderfluid</option>
+            <option value="Genderqueer">Genderqueer</option>
+            <option value="Agender">Agender</option>
+            <option value="Other Identity">Other (Specify)</option>
+        </select>
+
+        <!-- TEXT INPUT IF "Other Identity" selected -->
+        <input type="text" name="other_gender_text" id="other_gender_text"
+               class="blood-input" placeholder="Enter your gender"
+               style="display:none;" />
+
+        <input type="text" name="location" class="blood-input" placeholder="City / Location" required>
+
+        <select name="blood_group" class="blood-select" required>
+            <option value="" disabled selected>Select Blood Group</option>
+            <option>A+</option>
+            <option>A-</option>
+            <option>B+</option>
+            <option>B-</option>
+            <option>AB+</option>
+            <option>AB-</option>
+            <option>O+</option>
+            <option>O-</option>
+        </select>
+
+        <button class="blood-btn">Create Account</button>
+    </form>
+
+    <div class="blood-link">
+        Already have an account?
+        <a href="{{ url_for('login') }}">Login Here</a>
+    </div>
+</div>
+
+<!-- 🔥 JS TO HANDLE GENDER OPTIONS -->
+<script>
+document.getElementById("gender").addEventListener("change", function () {
+    let sub = document.getElementById("gender_other");
+    let textbox = document.getElementById("other_gender_text");
+
+    if (this.value === "Other") {
+        sub.style.display = "block";
+    } else {
+        sub.style.display = "none";
+        textbox.style.display = "none";
+    }
+});
+
+document.getElementById("gender_other").addEventListener("change", function () {
+    let textbox = document.getElementById("other_gender_text");
+
+    if (this.value === "Other Identity") {
+        textbox.style.display = "block";
+    } else {
+        textbox.style.display = "none";
+    }
+});
+</script>
+
+{% endblock %}

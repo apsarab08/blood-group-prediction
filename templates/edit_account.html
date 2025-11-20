@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+.edit-card {
+    max-width: 530px;
+    margin: auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 20px;
+    border: 2px solid #ffcccc;
+    box-shadow: 0 10px 25px rgba(255,0,0,0.15);
+}
+.edit-card h2 {
+    color: #b30000;
+    font-weight: 800;
+    text-align:center;
+}
+.input-field {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 12px;
+    border: 2px solid #f5b5b5;
+}
+</style>
+
+<div class="edit-card">
+    <h2>Edit Profile</h2>
+
+    <form method="POST">
+
+        <input type="text" name="name" class="input-field"
+               value="{{ user.name }}" required>
+
+        <input type="text" name="phone" class="input-field"
+               value="{{ user.phone }}" placeholder="Phone">
+
+        <select name="gender" class="input-field">
+            <option value="Male" {% if user.gender=="Male" %}selected{% endif %}>Male</option>
+            <option value="Female" {% if user.gender=="Female" %}selected{% endif %}>Female</option>
+            <option value="Other" {% if user.gender=="Other" %}selected{% endif %}>Other</option>
+        </select>
+
+        <input type="text" name="location" class="input-field"
+               value="{{ user.location }}" placeholder="City">
+
+        <select name="blood_group" class="input-field">
+            <option {{ "selected" if user.blood_group=="A+" else "" }}>A+</option>
+            <option {{ "selected" if user.blood_group=="A-" else "" }}>A-</option>
+            <option {{ "selected" if user.blood_group=="B+" else "" }}>B+</option>
+            <option {{ "selected" if user.blood_group=="B-" else "" }}>B-</option>
+            <option {{ "selected" if user.blood_group=="AB+" else "" }}>AB+</option>
+            <option {{ "selected" if user.blood_group=="AB-" else "" }}>AB-</option>
+            <option {{ "selected" if user.blood_group=="O+" else "" }}>O+</option>
+            <option {{ "selected" if user.blood_group=="O-" else "" }}>O-</option>
+        </select>
+
+        <button class="btn btn-danger" style="width:100%; margin-top:15px;">
+            Save Changes
+        </button>
+
+    </form>
+</div>
+
+{% endblock %}

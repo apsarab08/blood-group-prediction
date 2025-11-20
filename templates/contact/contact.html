@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+  :root{
+    --bg:#f6f9fb; --card:#ffffff; --accent:#005EB8; --muted:#6b7280;
+    --radius:12px; --maxw:980px;
+  }
+  *{box-sizing:border-box}
+
+  /* ❗ FIX: MOVE body styles to a wrapper */
+  .contact-wrapper{
+    font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
+    background:var(--bg);
+    color:#0b2440;
+    padding:28px;
+    display:flex;
+    justify-content:center;
+  }
+
+  .wrap{width:100%;max-width:var(--maxw)}
+
+  .card{
+    background:var(--card);
+    border-radius:var(--radius);
+    box-shadow:0 10px 30px rgba(11,36,64,0.06);
+    padding:28px;
+    display:grid;
+    grid-template-columns:1fr 380px;
+    gap:26px;
+    align-items:start
+  }
+
+  .hero{display:flex;gap:14px;align-items:center}
+  .logo{width:84px;height:84px;border-radius:10px;overflow:hidden;flex-shrink:0}
+  .logo img{width:100%;height:100%;object-fit:cover;display:block}
+  h1{margin:0;font-size:20px}
+  p.lead{margin:6px 0 0;color:var(--muted)}
+
+  form{display:flex;flex-direction:column;gap:12px}
+  label{font-size:13px;color:#223049}
+
+  input[type="text"], input[type="email"], textarea, select{
+    width:100%;padding:12px;border:1px solid #e6eef8;border-radius:10px;
+    font-size:14px;background:#fff;color:#0b2440
+  }
+
+  textarea{min-height:120px;resize:vertical}
+
+  .row{display:flex;gap:12px}
+  .row .col{flex:1}
+  .meta{font-size:13px;color:var(--muted);margin-top:8px}
+
+  .right{
+    background:linear-gradient(180deg, rgba(2,169,247,0.06), rgba(0,94,184,0.02));
+    padding:18px;border-radius:10px;
+    border:1px solid rgba(2,169,247,0.07)
+  }
+
+  .contact-item{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
+  .ci-icon{
+    width:44px;height:44px;border-radius:8px;background:#ffffff;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 14px rgba(11,36,64,0.04)
+  }
+  .ci-title{font-weight:600;color:#052a4a}
+  .ci-desc{font-size:13px;color:var(--muted)}
+
+  .btn{
+    display:inline-block;padding:11px 16px;background:var(--accent);
+    color:#fff;border-radius:10px;border:none;font-weight:600;cursor:pointer
+  }
+  .note{font-size:12px;color:var(--muted)}
+
+  footer{text-align:center;color:var(--muted);font-size:13px;margin-top:18px}
+
+  @media (max-width:920px){.card{grid-template-columns:1fr;}.right{order:2}}
+</style>
+
+<!-- FIX: wrapper placed INSIDE base.html layout -->
+<div class="contact-wrapper">
+  <main class="wrap">
+    <div class="card" role="region" aria-label="Contact form">
+
+      <section aria-labelledby="contact-heading">
+        <div class="hero">
+          <div class="logo" aria-hidden="true">
+            <img src="{{ url_for('static', filename='images/fingerprint.jpg') }}" alt="Fingerprint dashboard screenshot"/>
+          </div>
+          <div>
+            <h1 id="contact-heading">Contact the Project Team</h1>
+            <p class="lead">Questions, feedback, or collaboration ideas? We’d love to hear from you.</p>
+            <p class="meta">Typical response time: 1–2 business days</p>
+          </div>
+        </div>
+
+        <form id="contact-form" action="{{ url_for('contact') }}" method="POST" novalidate>
+
+          <div class="row">
+            <div class="col">
+              <label for="name">Full name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required />
+            </div>
+
+            <div class="col">
+              <label for="role">Role</label>
+              <select id="role" name="role">
+                <option value="student">Student / Researcher</option>
+                <option value="industry">Industry / Partner</option>
+                <option value="media">Media / Press</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
+
+          <div style="display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:6px">
+            <div class="note">
+              By sending you agree to our
+              <a href="{{ url_for('privacy') }}" target="_blank">privacy policy</a>.
+            </div>
+
+            <button class="btn" type="submit">Send message</button>
+          </div>
+
+        </form>
+      </section>
+
+      <aside class="right">
+        <h3>Contact the Project Owner</h3>
+
+        <div class="contact-item">
+          <div class="ci-icon">👤</div>
+          <div>
+            <div class="ci-title">Harshitha B, Apsara B, Bindushree B D, Chethanya N</div>
+            <div class="ci-desc">Lead researchers & authors of the IEEE ICSCN Paper</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="ci-icon">📄</div>
+          <div>
+            <div class="ci-title">Published IEEE ICSCN Paper</div>
+            <div class="ci-desc">
+              “Fingerprint-Based Blood Group Prediction using Deep Learning”<br>
+              <a href="{{ url_for('static', filename='static/files/Blood_Group_Prediction_Using_Fingerprint.pdf') }}" download class="note">Download Paper (PDF)</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-title">Email</div>
+            <div class="ci-desc"><a href="mailto:1bi22cs063@bit-bangalore.edu.in">1bi22cs063@bit-bangalore.edu.in</a></div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="ci-icon">📱</div>
+          <div>
+            <div class="ci-title">Phone</div>
+            <div class="ci-desc">+91 98765 43210</div>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+
+    <footer>
+      © <span id="year"></span> Blood Group Prediction • Built with care for research and education
+    </footer>
+  </main>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+{% endblock %}

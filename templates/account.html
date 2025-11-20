@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+.profile-card {
+    max-width: 500px;
+    margin: auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 20px;
+    border: 2px solid #ffcccc;
+    box-shadow: 0 10px 25px rgba(255,0,0,0.15);
+}
+.profile-card h2 {
+    color: #b30000;
+    font-weight: 800;
+}
+.profile-row {
+    margin: 12px 0;
+}
+.label {
+    font-weight: 700;
+    color: #900;
+}
+</style>
+
+<div class="profile-card">
+    <h2>🩸 My Account</h2>
+
+    <div class="profile-row"><span class="label">Name:</span> {{ user.name }}</div>
+    <div class="profile-row"><span class="label">Email:</span> {{ user.email }}</div>
+    <div class="profile-row"><span class="label">Phone:</span> {{ user.phone }}</div>
+    <div class="profile-row"><span class="label">Gender:</span> {{ user.gender }}</div>
+    <div class="profile-row"><span class="label">Location:</span> {{ user.location }}</div>
+    <div class="profile-row"><span class="label">Blood Group:</span> {{ user.blood_group }}</div>
+
+    <a href="{{ url_for('edit_account') }}" class="btn btn-danger" 
+       style="margin-top:20px; display:inline-block;">Edit Details</a>
+</div>
+
+{% endblock %}

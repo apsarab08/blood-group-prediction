@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    .history-card {
+        background: #fff;
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 0 8px 25px rgba(255,0,0,0.15);
+        border: 2px solid #ffcccc;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #f2f2f2;
+    }
+    th {
+        background: #ffe5e5;
+        color: #c60000;
+        font-weight: 700;
+    }
+</style>
+
+<div class="history-card">
+    <h2>🩸 Your Prediction History</h2>
+    <p class="muted">All your past predictions appear here.</p>
+
+    <table>
+        <tr>
+            <th>Image</th>
+            <th>Predicted Group</th>
+            <th>Confidence</th>
+            <th>Date</th>
+        </tr>
+
+        {% for row in history %}
+        <tr>
+            <td>
+                <img src="{{ url_for('static', filename='uploads/' + row.image_name) }}"
+                     style="width:70px;border-radius:8px;">
+            </td>
+            <td>{{ row.predicted_label }}</td>
+            <td>{{ "%.2f"|format(row.confidence) }}%</td>
+            <td>{{ row.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+{% endblock %}

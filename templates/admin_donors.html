@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    .card-admin {
+        background: #fff;
+        padding: 25px;
+        border-radius: 20px;
+        border: 2px solid #ffcccc;
+        box-shadow: 0 10px 28px rgba(255,0,0,0.2);
+        margin-bottom: 20px;
+    }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    th { background:#ffd6d6; padding:12px; }
+    td { padding:10px; border-bottom:1px solid #ffe2e2; }
+</style>
+
+<div class="card-admin">
+    <h2>🩸 Filter Donors</h2>
+
+    <form method="GET">
+        <select name="blood" style="padding:10px;border-radius:10px;">
+            <option value="">Select Blood Group</option>
+            <option>A+</option><option>A-</option>
+            <option>B+</option><option>B-</option>
+            <option>AB+</option><option>AB-</option>
+            <option>O+</option><option>O-</option>
+        </select>
+
+        <input type="text" name="city" placeholder="Enter City"
+               style="padding:10px;border-radius:10px;">
+
+        <button class="btn-primary">Search</button>
+    </form>
+</div>
+
+<div class="card-admin">
+    <h3>Results</h3>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Blood Group</th>
+            <th>Phone</th>
+            <th>Gender</th>
+            <th>Location</th>
+            <th>Email</th>
+        </tr>
+
+        {% for d in donors %}
+        <tr>
+            <td>{{ d.name }}</td>
+            <td><b>{{ d.blood_group }}</b></td>
+            <td>{{ d.phone }}</td>
+            <td>{{ d.gender }}</td>
+            <td>{{ d.location }}</td>
+            <td>{{ d.email }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

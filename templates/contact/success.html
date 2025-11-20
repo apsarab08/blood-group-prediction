@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+body{
+    font-family: Arial;
+    background:#f6f9fb;
+    text-align:center;
+    padding:40px;
+}
+
+.box{
+    background:#fff;
+    padding:30px;
+    display:inline-block;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+a{
+    color:#005EB8;
+    font-weight:600;
+    text-decoration:none;
+}
+</style>
+
+<div class="box">
+    <h2>Message sent successfully!</h2>
+    <p>Thank you for contacting us.</p>
+
+    <!-- FIXED LINK: Uses Flask route instead of HTML file -->
+    <p><a href="{{ url_for('contact') }}">Back to Contact Page</a></p>
+</div>
+
+{% endblock %}

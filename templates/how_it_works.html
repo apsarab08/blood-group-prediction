@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+  <h2>How it works</h2>
+  <ol>
+    <li>Upload fingerprint image</li>
+    <li>Server resizes image to 256x256 and preprocesses it</li>
+    <li>Image is fed to VGG16-based model</li>
+    <li>Model returns predicted blood group and confidence</li>
+    <li>Prediction saved to MySQL (optional if logged in)</li>
+  </ol>
+</div>
+{% endblock %}

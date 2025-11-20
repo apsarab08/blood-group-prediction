@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    .login-card {
+        max-width: 480px;
+        margin: auto;
+        padding: 32px;
+        border-radius: 20px;
+        background: #fff;
+        box-shadow: 0 10px 35px rgba(255, 0, 0, 0.15);
+        border: 2px solid #ffcccc;
+        text-align: center;
+        animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .blood-title {
+        font-size: 30px;
+        font-weight: 800;
+        color: #c60000;
+        margin-bottom: 5px;
+    }
+
+    .blood-sub {
+        font-size: 15px;
+        color: #6b7280;
+        margin-bottom: 20px;
+    }
+
+    .blood-input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 12px;
+        border: 2px solid #f5b5b5;
+        font-size: 15px;
+        transition: 0.3s;
+    }
+
+    .blood-input:focus {
+        border-color: #ff4d4d;
+        outline: none;
+    }
+
+    .blood-btn {
+        width: 100%;
+        padding: 14px;
+        background: #d90000;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 17px;
+        font-weight: 700;
+        cursor: pointer;
+        margin-top: 14px;
+        transition: 0.25s;
+    }
+
+    .blood-btn:hover {
+        background: #b30000;
+    }
+
+    .blood-link {
+        margin-top: 12px;
+        font-size: 14px;
+    }
+
+    .blood-link a {
+        color: #d90000;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .blood-link a:hover {
+        text-decoration: underline;
+    }
+
+    .drop-icon {
+        font-size: 48px;
+        color: #d90000;
+        margin-bottom: 5px;
+    }
+</style>
+
+<div class="login-card">
+    <div class="drop-icon">🩸</div>
+    <div class="blood-title">Login</div>
+    <div class="blood-sub">Welcome back — heroes save lives!</div>
+
+    <form method="POST">
+        <input type="email" name="email" class="blood-input" placeholder="Email Address" required>
+        <input type="password" name="password" class="blood-input" placeholder="Password" required>
+
+        <button class="blood-btn">Login</button>
+    </form>
+
+    <div class="blood-link">
+        Don’t have an account?
+        <a href="{{ url_for('signup') }}">Create New Account</a>
+    </div>
+</div>
+
+{% endblock %}

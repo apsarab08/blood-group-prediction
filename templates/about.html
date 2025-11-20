@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+  <h2>About the Project</h2>
+  <p class="muted">This project uses a VGG16-based model to predict blood groups from fingerprint images.</p>
+
+  <div style="display:flex;gap:18px;margin-top:18px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:220px;text-align:center;">
+      <img src="/mnt/data/e76cda62-3051-48eb-a959-fe5087ab2f43.png" alt="demo1" style="max-width:100%;border-radius:12px;" />
+      <p class="muted">Demo screenshot 1</p>
+    </div>
+    <div style="flex:1;min-width:220px;text-align:center;">
+      <img src="/mnt/data/c354d7e3-510f-468d-a2f7-53b3ae14446f.png" alt="demo2" style="max-width:100%;border-radius:12px;" />
+      <p class="muted">Demo screenshot 2</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

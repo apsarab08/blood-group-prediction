@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+  <div class="row">
+    <div class="col" style="flex:0 0 420px;">
+      <h1 style="margin:0 0 8px 0;">🩺 Predict Blood Group</h1>
+      <p class="muted" style="margin-top:0">Upload a fingerprint image and click Predict.</p>
+
+      <form method="POST" enctype="multipart/form-data" onsubmit="showLoaderText('loader','Analyzing...')">
+        <div style="margin-top:18px;">
+          <input type="file" name="image" accept="image/*" onchange="previewLocal(event)" required>
+        </div>
+
+        <div style="margin-top:14px;">
+          <button class="btn-primary" type="submit">🔍 Predict</button>
+        </div>
+      </form>
+
+      <div id="loader" style="margin-top:12px;color:var(--muted)"></div>
+
+      {% if prediction %}
+        <div style="margin-top:18px;font-weight:700;color:green;">{{ prediction }}</div>
+      {% endif %}
+    </div>
+
+    <div class="col">
+      <div style="text-align:center">
+        {% if image_file %}
+          <img id="preview" src="{{ url_for('static', filename='uploads/' + image_file) }}" style="max-width:240px;border-radius:12px;" />
+        {% else %}
+          <img id="preview" style="max-width:240px;border-radius:12px;display:none;" />
+        {% endif %}
+      </div>
+
+      <div style="margin-top:18px;font-size:14px;color:var(--muted)">
+        <p><strong>Tip:</strong> Use clear fingerprint images for better predictions.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function previewLocal(event){
+    const img = document.getElementById('preview');
+    img.src = URL.createObjectURL(event.target.files[0]);
+    img.style.display = 'block';
+  }
+</script>
+
+{% endblock %}
