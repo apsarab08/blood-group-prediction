@@ -82,8 +82,7 @@ The application helps achieve:
 
 ## Project Structure
 
-## Project Structure
-
+```
 blood-group-prediction/
 │
 ├── app.py
@@ -105,7 +104,7 @@ blood-group-prediction/
 │   └── contact.html
 │
 └── blood_detector.sql
-
+```
 
 ---
 
@@ -113,87 +112,50 @@ blood-group-prediction/
 
 ### 1. Clone the Repository
 
-Open terminal and run:
-
+```
 git clone https://github.com/apsarab08/blood-group-prediction.git
 cd blood-group-prediction
-
-
----
+```
 
 ### 2. Create a Virtual Environment
 
 On Windows:
 
+```
 python -m venv .venv
 .venv\Scripts\activate
-
-graphql
-Copy code
+```
 
 On Linux or Mac:
 
+```
 python3 -m venv .venv
 source .venv/bin/activate
+```
 
+### 3. Install Dependencies
 
----
-
-### 3. Install Required Dependencies
-
-Create a requirements.txt file in the project root with the following packages:
-
-Flask
-tensorflow
-numpy
-opencv-python
-mysql-connector-python
-Werkzeug
-Pillow
-pandas
-scikit-learn
-matplotlib
-
-Then run:
-
+```
 pip install -r requirements.txt
-
----
+```
 
 ### 4. Setup Database
 
-Make sure MySQL is installed and running.
-
-Create a database named blood_detector.
-
-Import the SQL file:
-
+```
 mysql -u root -p blood_detector < blood_detector.sql
+```
 
+### 5. Run Application
 
----
-
-### 5. Configure Upload Folder
-
-mkdir static/uploads
-
-
----
-
-### 6. Run the Application
-
+```
 python app.py
+```
 
+### 6. Access the Web Interface
 
----
-
-### 7. Access the Web Interface
-
-Open browser and go to:
-
+```
 http://127.0.0.1:5000
-
-
+```
 
 ---
 
@@ -201,7 +163,7 @@ http://127.0.0.1:5000
 
 - requires clear fingerprint images  
 - accuracy depends on dataset size  
-- not intended for critical medical diagnosis  
+- not suitable for critical medical diagnosis  
 - needs further training for real-world usage  
 
 ---
@@ -218,4 +180,4 @@ http://127.0.0.1:5000
 
 ## Conclusion
 
-Blood group prediction using fingerprint patterns is an innovative intersection of deep learning and biomedical image analysis.
+Blood group prediction using fingerprints is an innovative intersection of deep learning and biomedical image analysis. With further research and training, this system can evolve into a practical non-invasive screening tool.
