@@ -1,13 +1,15 @@
-🩸 Blood Group Prediction Using Fingerprint Patterns with Deep Learning
+🩸 Blood Group Prediction Using Fingerprint Patterns
 📌 Project Description
 
-This project is a deep learning-powered web application that predicts the blood group of a person from a fingerprint image. The system uses a trained VGG16 Convolutional Neural Network model integrated with a Flask backend and MySQL database to provide quick and automated predictions.
+This project is a deep learning-powered web application that predicts the blood group of a person from a fingerprint image. The system uses a trained VGG16 Convolutional Neural Network model integrated with a Flask backend and MySQL database to generate automated predictions.
 
-The platform includes secure user authentication, prediction history tracking, and an admin dashboard for system management.
+The platform provides user authentication, tracks prediction history, and includes an admin dashboard for managing system data.
 
 🧠 Problem It Solves
 
-Traditional blood group identification requires invasive medical tests and manual laboratory procedures. This system proposes a non-invasive alternative by analyzing fingerprint images using Artificial Intelligence. It helps achieve:
+Blood group identification in the real world normally requires invasive blood tests and manual lab analysis. This application explores a non-invasive AI-based alternative by using fingerprint image patterns for prediction.
+
+It helps achieve:
 
 faster prediction results
 
@@ -15,7 +17,7 @@ reduced human effort
 
 automated classification
 
-easy accessibility via a web browser
+easy accessibility through a browser interface
 
 ✨ Features
 
@@ -23,19 +25,21 @@ secure login and signup system
 
 fingerprint image upload for prediction
 
-image validation and preprocessing
+image format validation
 
-display predicted blood group
+preprocessing of fingerprint images
 
-confidence score for each prediction
+blood group prediction with deep learning
+
+display of confidence score
 
 user prediction history maintenance
 
-admin panel for managing users and donor data
+admin panel for managing users
 
 contact and privacy pages
 
-🛠️ Technologies Used
+🛠 Technologies Used
 Backend
 
 Python
@@ -46,7 +50,7 @@ TensorFlow
 
 Keras
 
-Werkzeug
+Werkzeug Security
 
 MySQL Connector
 
@@ -72,27 +76,27 @@ OpenCV
 
 Pillow
 
-Pillow Image Processing
-
 Scikit-Learn
 
 Matplotlib
 
-⚙️ Workflow of the System
+⚙ Workflow of the System
 
 user uploads a fingerprint image
 
-system checks for valid image format
+system validates the image format
 
-preprocessing is applied
+image preprocessing is applied
 
-VGG16 model predicts probabilities
+VGG16 model analyzes the image
+
+probabilities for each class are generated
 
 final blood group is selected
 
 confidence score is displayed
 
-result is stored for future reference
+result is stored in database
 
 📂 Project Structure
 blood-group-prediction/
@@ -141,7 +145,7 @@ source .venv/bin/activate
 
 3. Install Required Dependencies
 
-Create a requirements.txt file in the project root and add:
+Create a requirements.txt file in the project root and include the following packages:
 
 Flask
 tensorflow
@@ -155,60 +159,60 @@ scikit-learn
 matplotlib
 
 
-Then run:
+Then execute:
 
 pip install -r requirements.txt
 
 4. Database Setup
 
-Ensure MySQL is installed and running.
+Make sure MySQL is installed and running on your system.
 
 Create a database named blood_detector.
 
-Import the SQL file included in the repository:
+Import the SQL schema file included in the repository:
 
 mysql -u root -p blood_detector < blood_detector.sql
 
 5. Configure Upload Folder
 
-Make sure the upload directory exists:
+Ensure the uploads directory exists inside the static folder:
 
 mkdir static/uploads
 
 6. Run the Application
 
-Start the Flask server:
+Start the Flask development server:
 
 python app.py
 
 7. Access the Web Interface
 
-Open your browser and go to:
+Open your browser and navigate to:
 
 http://127.0.0.1:5000
 
-⚠️ Limitations
+⚠ Limitations
 
 requires clear fingerprint images
 
-accuracy limited by dataset size
+prediction accuracy depends on dataset size
 
-not intended for critical medical diagnosis
+not suitable for critical medical diagnosis
 
 needs further training for real-world use
 
 🔮 Future Enhancements
 
-expand the dataset
+expand and improve dataset
 
-improve model accuracy
+increase model accuracy
 
-integrate mobile scanning
+integrate mobile fingerprint scanning
 
-deploy on cloud platforms
+deploy the system on cloud platforms
 
-enhance UI and UX
+enhance UI and UX design
 
 💻 Conclusion
 
-Blood group prediction using fingerprint patterns is an innovative application of deep learning in the biomedical domain. With further research and real-world data, this system can evolve into a useful non-invasive screening tool.
+Blood group prediction using fingerprint images is a creative intersection of deep learning and biomedical analysis. With further research and improvements, this system can evolve into a helpful non-invasive screening application.
