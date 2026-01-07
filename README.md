@@ -93,10 +93,6 @@ vgg16/
 │
 └── blood_detector.sql
 
-yaml
-Copy code
-
----
 
 ## Installation and Setup
 
