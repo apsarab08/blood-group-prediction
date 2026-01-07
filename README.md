@@ -82,6 +82,8 @@ The application helps achieve:
 
 ## Project Structure
 
+## Project Structure
+
 blood-group-prediction/
 │
 ├── app.py
@@ -100,8 +102,7 @@ blood-group-prediction/
 │   ├── account.html
 │   ├── edit_account.html
 │   ├── about.html
-│   ├── contact.html
-│   └── how_it_works.html
+│   └── contact.html
 │
 └── blood_detector.sql
 
