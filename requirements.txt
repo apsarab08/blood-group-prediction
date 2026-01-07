@@ -1,0 +1,6 @@
+Flask
+tensorflow
+numpy
+Werkzeug
+mysql-connector-python
+Pillow
