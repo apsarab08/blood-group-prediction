@@ -89,19 +89,19 @@ blood-group-prediction/
 ├── model_blood_group_detection_vgg16.h5
 │
 ├── static/
-│ └── uploads/
+│   └── uploads/
 │
 ├── templates/
-│ ├── index.html
-│ ├── login.html
-│ ├── signup.html
-│ ├── predict.html
-│ ├── history.html
-│ ├── account.html
-│ ├── edit_account.html
-│ ├── about.html
-│ ├── contact.html
-│ └── how_it_works.html
+│   ├── index.html
+│   ├── login.html
+│   ├── signup.html
+│   ├── predict.html
+│   ├── history.html
+│   ├── account.html
+│   ├── edit_account.html
+│   ├── about.html
+│   ├── contact.html
+│   └── how_it_works.html
 │
 └── blood_detector.sql
 
